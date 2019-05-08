@@ -24,8 +24,8 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/381509610@qq.com/DQPageController'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '381509610@qq.com' => 'huangxiong@offcn.com' }
-  s.source           = { :git => 'https://github.com/381509610@qq.com/DQPageController.git', :tag => s.version.to_s }
+  s.author           = { 'debug89' => 'huangxiong@offcn.com' }
+  s.source           = { :git => 'https://github.com/debug89/DQPageController.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
