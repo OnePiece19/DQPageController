@@ -1,0 +1,6 @@
+framework module DQPageController {
+  umbrella header "DQPageController-umbrella.h"
+
+  export *
+  module * { export * }
+}

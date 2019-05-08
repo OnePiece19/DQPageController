@@ -1,0 +1,22 @@
+PODS:
+  - DQPageController (0.1.0):
+    - YYKit (~> 1.0.9)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - DQPageController (from `../`)
+  - YYKit (~> 1.0.9)
+
+EXTERNAL SOURCES:
+  DQPageController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  DQPageController: 2fc4c40fb138e82208d648218f724bb85a466392
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: 7757779b484dfbe52c2ed095943f6af170e070d4
+
+COCOAPODS: 1.4.0

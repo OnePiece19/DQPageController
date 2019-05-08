@@ -307,12 +307,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DQPageController_Example/Pods-DQPageController_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DQPageController/DQPageController.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DQPageController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
