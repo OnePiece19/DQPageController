@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'DQPageController_Example' do
+  pod 'DQPageController', :path => '../'
+
+  target 'DQPageController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
