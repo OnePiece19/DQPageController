@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/debug89/DQPageController'
+  s.homepage         = 'https://github.com/OnePiece19/DQPageController'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'debug89' => 'huangxiong@offcn.com' }
-  s.source           = { :git => 'https://github.com/debug89/DQPageController.git', :tag => s.version.to_s }
+  s.author           = { 'OnePiece19' => 'huangxiong@offcn.com' }
+  s.source           = { :git => 'https://github.com/OnePiece19/DQPageController.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
