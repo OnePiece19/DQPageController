@@ -312,10 +312,10 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
 
 - (DQpageIndexStoreState)caculateIndexState:(NSInteger)index{
     NSNumber *idx = @(index);
-    if ([self.visibleIndexItems containsObjectForKey:idx]) {
+    if ([[self.visibleIndexItems allKeys] containsObject:idx]) {
         return DQpageIndexStoreStateVisible;
     }
-    if ([self.prefetchIndexItems containsObjectForKey:idx]) {
+    if ([[self.prefetchIndexItems allKeys] containsObject:idx]) {
         return DQpageIndexStoreStatePrefect;
     }
     if ([self cacheItemForKey:idx]) {

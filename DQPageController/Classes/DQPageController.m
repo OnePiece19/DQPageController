@@ -259,6 +259,7 @@
                                                  respondsToSelector:
                                                  @selector(pageController:transitionFromIndex:toIndex:animated:)];
     _delegateFlags.transitionFromIndexToIndexProgress = [delegate respondsToSelector:@selector(pageController:transitionFromIndex:toIndex:progress:)];
+    
     _delegateFlags.didClickPageViewIndex = [delegate respondsToSelector:@selector(pageController:didClickPageViewIndex:)];
     
     _delegateFlags.pageControllerScrollLeftEndLoadMore = [delegate respondsToSelector:@selector(pageControllerScrollLeftEndLoadMore:)];

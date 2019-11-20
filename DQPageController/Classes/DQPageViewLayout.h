@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <YYKit/YYKit.h>
 
 @class DQPageViewLayout;
 
@@ -24,11 +23,11 @@
 
 - (NSInteger)numberOfItemsInpageViewLayout;
 
-- (id)pageViewLayout:(DQPageViewLayout *)pageViewLayout itemForIndex:(NSInteger)index prefetching:(BOOL)prefetching;
+- (id _Nullable )pageViewLayout:(DQPageViewLayout *_Nullable)pageViewLayout itemForIndex:(NSInteger)index prefetching:(BOOL)prefetching;
 
 @optional
 
-- (UIView *)pageViewLayout:(DQPageViewLayout *)pageViewLayout viewForItem:(id)item atIndex:(NSInteger)index;
+- (UIView *_Nullable)pageViewLayout:(DQPageViewLayout *_Nonnull)pageViewLayout viewForItem:(id)item atIndex:(NSInteger)index;
 
 - (void)pageViewLayout:(DQPageViewLayout *)pageViewLayout addVisibleItem:(id)item atIndex:(NSInteger)index;
 

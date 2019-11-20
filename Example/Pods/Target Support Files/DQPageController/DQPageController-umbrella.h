@@ -12,6 +12,9 @@
 
 #import "DQPageController.h"
 #import "DQPageViewLayout.h"
+#import "DQTabPageBar.h"
+#import "DQTabPageBarCell.h"
+#import "DQTabPageBarLayout.h"
 
 FOUNDATION_EXPORT double DQPageControllerVersionNumber;
 FOUNDATION_EXPORT const unsigned char DQPageControllerVersionString[];
