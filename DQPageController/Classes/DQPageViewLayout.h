@@ -27,16 +27,22 @@
 
 @optional
 
+NS_ASSUME_NONNULL_BEGIN
+
 - (UIView *_Nullable)pageViewLayout:(DQPageViewLayout *_Nonnull)pageViewLayout viewForItem:(id)item atIndex:(NSInteger)index;
 
 - (void)pageViewLayout:(DQPageViewLayout *)pageViewLayout addVisibleItem:(id)item atIndex:(NSInteger)index;
 
 - (void)pageViewLayout:(DQPageViewLayout *)pageViewLayout removeInVisibleItem:(id)item atIndex:(NSInteger)index;
 
+NS_ASSUME_NONNULL_END
+
 @end
 
 
 @protocol DQPageViewLayoutDelegate <NSObject>
+
+NS_ASSUME_NONNULL_BEGIN
 
 - (void)pageViewLayout:(DQPageViewLayout *)pageViewLayout transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated;
 
@@ -60,6 +66,8 @@
 - (void)pageViewLayoutDidEndDecelerating:(DQPageViewLayout *)pageViewLayout;
 
 - (void)pageViewLayoutDidEndScrollingAnimation:(DQPageViewLayout *)pageViewLayout;
+
+NS_ASSUME_NONNULL_END
 
 @end
 

@@ -206,15 +206,18 @@
     if (_pageTabBar.countOfItems == 0) {
         return;
     }
+    // 其实不会循环引用，保险加上__weak
+    __weak typeof(self) weakSelf = self;
     void (^animateBlock)(void) = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (fromCell) {
-            fromCell.titleLabel.font = _normalTextFont;
-            fromCell.titleLabel.textColor = _normalTextColor;
-            fromCell.transform = CGAffineTransformMakeScale(_selectFontScale, _selectFontScale);
+            fromCell.titleLabel.font = strongSelf.normalTextFont;
+            fromCell.titleLabel.textColor = strongSelf.normalTextColor;
+            fromCell.transform = CGAffineTransformMakeScale(strongSelf.selectFontScale, strongSelf.selectFontScale);
         }
         if (toCell) {
-            toCell.titleLabel.font = _selectedTextFont;
-            toCell.titleLabel.textColor = _selectedTextColor ? _selectedTextColor : _normalTextColor;
+            toCell.titleLabel.font = strongSelf.selectedTextFont;
+            toCell.titleLabel.textColor = strongSelf.selectedTextColor ? strongSelf.selectedTextColor : strongSelf.normalTextColor;
             toCell.transform = CGAffineTransformIdentity;
         }
     };
@@ -270,7 +273,7 @@
     
     if (animated) {
         [UIView animateWithDuration:_animateDuration animations:^{
-            progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
+            progressView.frame = CGRectMake(progressX, progressY, width, self.progressHeight);
         }];
     }else {
         progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);

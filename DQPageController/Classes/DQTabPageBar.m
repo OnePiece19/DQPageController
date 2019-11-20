@@ -156,7 +156,7 @@
     if (_curIndex >= _countOfItems) {
         _curIndex = _countOfItems - 1;
     }
-    if ([_delegate respondsToSelector:@selector(pagerTabBar:configureLayout:)]) {
+    if ([_delegate respondsToSelector:@selector(pageTabBar:configureLayout:)]) {
         [_delegate pageTabBar:self configureLayout:self.layout];
     }
     [self.layout layoutIfNeed];
