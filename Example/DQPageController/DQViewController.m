@@ -88,7 +88,7 @@
     [_pageController scrollToItemAtIndex:index animate:YES];
 }
 
-#pragma mark - DQPageControllerDataSource and delegate
+#pragma mark - DQPageControllerDataSource
 
 - (NSInteger)numberOfControllersInpageController {
     return self.subControlArray.count;
@@ -97,7 +97,26 @@
 - (UIViewController *)pageController:(DQPageController *)pageController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
     NSDictionary * controlDict = self.subControlArray[index];
     UIViewController * subController = [[NSClassFromString(controlDict[@"className"]) alloc] init];
+    subController.view.backgroundColor = ([UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0f]);
     return subController;
+}
+
+#pragma mark - DQPageControllerDelegate
+
+- (void)pageController:(DQPageController *)pageController viewWillAppear:(UIViewController *)viewController forIndex:(NSInteger)index {
+    NSLog(@"将要显示 %ld",(long)index);
+}
+
+- (void)pageController:(DQPageController *)pageController viewDidAppear:(UIViewController *)viewController forIndex:(NSInteger)index {
+    NSLog(@"已经显示 %ld",(long)index);
+}
+
+- (void)pageController:(DQPageController *)pageController viewWillDisappear:(UIViewController *)viewController forIndex:(NSInteger)index {
+    NSLog(@"将要消失 %ld",(long)index);
+}
+
+- (void)pageController:(DQPageController *)pageController viewDidDisappear:(UIViewController *)viewController forIndex:(NSInteger)index {
+    NSLog(@"已经消失 %ld",(long)index);
 }
 
 - (void)pageController:(DQPageController *)pageController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated {

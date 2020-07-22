@@ -247,6 +247,7 @@
         layout.delegate = self;
         layout.adjustScrollViewInset = YES;
         _layout = layout;
+        _scrollView = scrollView;
     }
     return _layout;
 }
@@ -255,15 +256,15 @@
 
 -(void)setDelegate:(id<DQPageControllerDelegate>)delegate{
     _delegate = delegate;
-    _delegateFlags.transitionFromIndexToIndex = [delegate
-                                                 respondsToSelector:
-                                                 @selector(pageController:transitionFromIndex:toIndex:animated:)];
+    
+    _delegateFlags.transitionFromIndexToIndex = [delegate respondsToSelector:@selector(pageController:transitionFromIndex:toIndex:animated:)];
     _delegateFlags.transitionFromIndexToIndexProgress = [delegate respondsToSelector:@selector(pageController:transitionFromIndex:toIndex:progress:)];
-    
+    _delegateFlags.viewWillAppearForIndex = [delegate respondsToSelector:@selector(pageController:viewWillAppear:forIndex:)];
+    _delegateFlags.viewDidAppearForIndex = [delegate respondsToSelector: @selector(pageController:viewDidAppear:forIndex:)];
+    _delegateFlags.viewWillDisappearForIndex = [delegate respondsToSelector:@selector(pageController:viewWillDisappear:forIndex:)];
+    _delegateFlags.viewDidDisappearForIndex = [delegate respondsToSelector:@selector(pageController:viewDidDisappear:forIndex:)];
     _delegateFlags.didClickPageViewIndex = [delegate respondsToSelector:@selector(pageController:didClickPageViewIndex:)];
-    
     _delegateFlags.pageControllerScrollLeftEndLoadMore = [delegate respondsToSelector:@selector(pageControllerScrollLeftEndLoadMore:)];
-    
     _delegateFlags.pageControllerScrollRightEndLoadMore = [delegate respondsToSelector:@selector(pageControllerScrollRightEndLoadMore:)];
 }
 
