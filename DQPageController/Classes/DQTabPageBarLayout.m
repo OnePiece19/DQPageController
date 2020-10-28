@@ -13,8 +13,6 @@
 
 @property (nonatomic, weak) DQTabPageBar *pageTabBar;
 
-@property (nonatomic, assign) CGFloat selectFontScale;
-
 @end
 
 #define kUnderLineViewHeight 2
@@ -48,7 +46,9 @@
                                        alpha:1.0f];
     _selectedTextColor = [UIColor colorWithRed:42.0f/255.0f green:46.0f/255.0f blue:61.0f/255.0f
                                          alpha:1.0f];
-    _selectFontScale = self.normalTextFont.pointSize/(self.selectedTextFont ? self.selectedTextFont.pointSize:self.normalTextFont.pointSize);
+    if (!_selectFontScale) {
+        _selectFontScale = self.normalTextFont.pointSize/(self.selectedTextFont ? self.selectedTextFont.pointSize : self.normalTextFont.pointSize);
+    }
     _textColorProgressEnable = YES;
 }
 
@@ -160,7 +160,9 @@
     UICollectionViewFlowLayout *collectionLayout = (UICollectionViewFlowLayout *)_pageTabBar.collectionView.collectionViewLayout;
     collectionLayout.minimumLineSpacing = _cellSpacing;
     collectionLayout.minimumInteritemSpacing = _cellSpacing;
-    _selectFontScale = self.normalTextFont.pointSize/(self.selectedTextFont ? self.selectedTextFont.pointSize:self.normalTextFont.pointSize);
+    if (!_selectFontScale) {
+        _selectFontScale = self.normalTextFont.pointSize/(self.selectedTextFont ? self.selectedTextFont.pointSize:self.normalTextFont.pointSize);
+    }
     collectionLayout.sectionInset = _sectionInset;
 }
 

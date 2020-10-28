@@ -152,7 +152,7 @@
     [pageViewLayout.scrollView addSubview:viewController.view];
 
     [self childViewControllerEndAppearanceTransition:viewController];
-    NSLog(@"添加控制器+ %ld",(long)index);
+//    NSLog(@"添加控制器+ %ld",(long)index);
     [viewController didMoveToParentViewController:self];
     if (_delegateFlags.viewDidAppearForIndex) {
         [_delegate pageController:self viewDidAppear:viewController forIndex:index];
@@ -172,7 +172,7 @@
         [_delegate pageController:self viewWillDisappear:viewController forIndex:index];
     }
     // removeChildViewController
-    NSLog(@"移除控制器- %ld",(long)index);
+//    NSLog(@"移除控制器- %ld",(long)index);
     [viewController willMoveToParentViewController:nil];
     [self childViewController:viewController BeginAppearanceTransition:NO animated:YES];
 

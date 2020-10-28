@@ -18,7 +18,7 @@
                                 DQPageControllerDataSource,
                                 DQPageControllerDelegate>
 
-@property (nonatomic, strong) NSArray * subControlArray;
+@property (nonatomic, strong) NSMutableArray * subControlArray;
 
 @property (nonatomic, weak) DQTabPageBar *tabBar;
 
@@ -31,16 +31,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self.subControlArray addObject:@{@"className":@"UIViewController",
+                                  @"tabName":@"标题一"}];
+    [self.subControlArray addObject:@{@"className":@"UIViewController",
+                                  @"tabName":@"标题二"}];
+    [self.subControlArray addObject:@{@"className":@"UIViewController",
+                                  @"tabName":@"标题三"}];
+    [self.subControlArray addObject:@{@"className":@"UIViewController",
+                                  @"tabName":@"标题四"}];
+    [self.subControlArray addObject:@{@"className":@"UIViewController",
+                                  @"tabName":@"标题五"}];
+    [self addNavRightBtn];
     [self addTabPageBar];
     [self addPageController];
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-//    CGFloat navHeight = [TWUtil getNavigationBarHeight];
-    _tabBar.frame = CGRectMake(0,88, kScreenWidth, 44);
+    CGFloat safetop = 0;
+    if (@available(iOS 11.0, *)) {
+        safetop = [UIApplication sharedApplication].delegate.window.safeAreaInsets.top;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    _tabBar.frame = CGRectMake(0, safetop+44, kScreenWidth, 44);
+    
     CGFloat pageControllerH = CGRectGetHeight(self.view.frame)- CGRectGetMaxY(_tabBar.frame);
     _pageController.view.frame = CGRectMake(0, CGRectGetMaxY(_tabBar.frame), CGRectGetWidth(self.view.frame), pageControllerH);
+}
+
+- (void)addNavRightBtn {
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 30, 30);
+    [btn setTitle:@"reload" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(reloadDataSource) forControlEvents:UIControlEventTouchUpInside];
+    btn.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn sizeToFit];
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = item;
 }
 
 - (void)addTabPageBar {
@@ -49,6 +79,12 @@
     tabBar.layout.progressRadius = 2.0f;
     tabBar.layout.progressHeight = 4.0f;
     tabBar.layout.progressVerEdging = 1.0f;
+    /*
+     字号更改时，无法添加动画，通过修改比例 显示动画
+     */
+    tabBar.layout.normalTextFont = [UIFont systemFontOfSize:15.0];
+    tabBar.layout.selectedTextFont = [UIFont systemFontOfSize:15.0];
+    tabBar.layout.selectFontScale = 15.0f/17.0f; // 设定同比字号缩放
     tabBar.dataSource = self;
     tabBar.delegate = self;
     [tabBar registerClass:[DQTabPageBarCell class] forCellWithReuseIdentifier:[DQTabPageBarCell cellIdentifier]];
@@ -64,6 +100,16 @@
     [self addChildViewController:pageController];
     [self.view addSubview:pageController.view];
     _pageController = pageController;
+    /*
+     单页也可以横向滑动设置
+     */
+    pageController.scrollView.alwaysBounceHorizontal = YES;
+}
+
+- (void)reloadDataSource {
+    [self.subControlArray removeLastObject];
+    [self.tabBar reloadData];
+    [self.pageController reloadData];
 }
 
 #pragma mark - DQTabPageBarDataSource  and  DQTabPageBarDelegate
@@ -129,15 +175,9 @@
 
 #pragma mark - 懒加载
 
-- (NSArray *)subControlArray {
+- (NSMutableArray *)subControlArray {
     if (!_subControlArray) {
-        
-        _subControlArray = @[@{@"className":@"UIViewController",
-                               @"tabName":@"标题一"},
-                             @{@"className":@"UIViewController",
-                               @"tabName":@"标题二"},
-                             @{@"className":@"UIViewController",
-                               @"tabName":@"标题三"}];
+        _subControlArray = [NSMutableArray array];
     }
     return _subControlArray;
 }

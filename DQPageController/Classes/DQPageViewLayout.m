@@ -187,6 +187,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     _needLayoutChildItems = NO;
     [_scrollView setContentOffset:CGPointMake(_firstScrollToIndex * CGRectGetWidth(_scrollView.frame),0) animated:NO];
     _needLayoutChildItems = YES;
+    [self setNeedLayout];
     [self layoutChildItems];
 }
     

@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, DQPageBarStyle) {
 
 @property (nonatomic, assign) DQPageBarStyle barStyle; // default TYPagerBarStyleProgressElasticView
 
-@property (nonatomic, assign, readonly) CGFloat selectFontScale;
+
 
 @property (nonatomic, assign) UIEdgeInsets sectionInset;
 
@@ -54,6 +54,7 @@ typedef NS_ENUM(NSUInteger, DQPageBarStyle) {
 @property (nonatomic, strong) UIFont *selectedTextFont;     // default 17
 @property (nonatomic, strong) UIColor *normalTextColor;     // default 51.51.51
 @property (nonatomic, strong) UIColor *selectedTextColor;   // default white
+@property (nonatomic, assign) CGFloat selectFontScale;      // default normalTextFontSize/selectedTextFontSize, you can set 1.0
 @property (nonatomic, assign) BOOL textColorProgressEnable; // default YES
 
 //   animate duration
